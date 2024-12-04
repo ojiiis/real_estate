@@ -1,0 +1,61 @@
+<?php
+include "0/main.php";
+include "0/nigeria.php";
+$startPath = "";
+if($devSetting["development"] == 1){
+   $startPath = $devSetting["devUrl"]; 
+}
+$_REQ = [];
+$parse = explode('?',$_SERVER['REQUEST_URI']);
+$_REQ['url'] = $parse[0];
+$_REQ['query'] = (count($parse) > 1)?$parse[1]:'';
+if(isset($_GET['auth'])){
+ session_start();
+ if(userData($_GET['auth'])){
+$_SESSION['user_id'] = $_GET['auth'];
+ header('Location: ./'.userData($_GET['auth'])['username']); 
+ }
+
+}
+
+if($_REQ['url'] == $startPath."/" || $_REQ['url'] == $startPath.""){
+    $_GET['is_home'] = 1;
+    include "header-one.php";
+    include "views/home.php";
+    include "footer.php";
+}else
+
+if($_REQ['url'] == $startPath."/listing" || $_REQ['url'] == $startPath."/listing/"){
+    include "header-one.php";
+    include "views/listing.php";
+    include "footer.php";
+}else
+if($_REQ['url'] == $startPath."/new" || $_REQ['url'] == $startPath."/new/"){
+       
+             include "header-user.php";
+          include "views/new-listing.php";
+         include "footer-user.php";
+}else
+if(preg_match('/'.$devSetting["devUrlPattern"].'\/([a-zA-Z0-9_]+)/',$_REQ['url'],$match)){
+      if(is_username($match[1])){
+        $_GET['username'] = $match[1];
+         include "header-user.php";
+          include "views/dashboard.php";
+         include "footer-user.php";
+      }else
+      if(is_state($match[1])){
+        
+      }else
+       if(is_city($match[1])){
+        
+      }else{
+        $_GET['is_home'] = 1;
+    include "header-one.php";
+    include "views/home.php";
+    include "footer.php";
+      }
+}
+
+
+?>
+<script src="js/client.js"></script>
