@@ -16532,3 +16532,10 @@ button.gm-ui-hover-effect:focus {
   cursor: not-allowed;
 }
 
+.hide{
+  display:none
+}
+.select{
+  width:100%;
+  padding:12px;
+}

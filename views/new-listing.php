@@ -93,7 +93,7 @@
 									    	<input type="text" class="form-control" id="propertyAddress">
 										</div>
 									</div>
-									<div class="col-lg-12 col-xl-12">
+									<div class="col-lg-12 col-xl-12" id="state">
 										<div class="my_profile_setting_input ui_kit_select_search form-group">
 									    	<label for="propertyState">State</label>
 											<select class="selectpicker"  id="propertyState" data-live-search="true" data-width="100%">
@@ -111,10 +111,15 @@
 										</div>
 										
 									</div>
-									<div class="col-lg-6 col-xl-6" style="display:none">
-										<div class="my_profile_setting_input form-group">
-									    	<label for="propertyCity">City</label>
-									    	<input type="text" class="form-control" id="propertyCity">
+									<style>
+										.hide{
+											display:none;
+										}
+									</style>
+									<div class="col-lg-6 col-xl-6 hide" id="city">
+										<div class="my_profile_setting_input ui_kit_select_search form-group" id="cities">
+									    	
+								
 										</div>
 									</div>
 									<div class="col-lg-4 col-xl-4">
@@ -397,7 +402,7 @@
 											</li>
 										</ul>
 									</div>
-									<div class="col-lg-12">
+									<div class="col-lg-12" id="drag-over-zone">
 										<div class="portfolio_upload">
 											<input type="file" name="myfile" />
 											<div class="icon"><span class="flaticon-download"></span></div>
@@ -509,7 +514,36 @@
 	</section>
 <script>
 var stateInput = document.getElementById('propertyState');
-stateInput.onchange = function(){
-	alert(this.value);
+stateInput.onchange = async function(){
+	const req = await fetch('./0/nigeria.php?state='+this.value);
+	const res = await req.json();
+	var data = `<label for="propertyCity">City</label>
+	<select id="propertyCity" name="city" class="select">
+	<option>Select an option</option>`;
+	for(i = 0; i < res.cities.length; i++){
+		data += `<option value="${res.cities[i]}">${res.cities[i]}</option>`;
+	}
+	
+	data += '</select>';
+    document.getElementById("cities").innerHTML = data;
+	document.getElementById("state").classList.remove('col-lg-12');
+	document.getElementById("state").classList.remove('col-xl-12');
+	document.getElementById("state").classList.add('col-lg-6');
+	document.getElementById("state").classList.add('col-xl-6');
+	document.getElementById("city").classList.remove('hide');
+	
+	
+}
+document.getElementById("drag-over-zone").ondragover = function(){
+	alert("drag over");
+}
+
+document.getElementById("drag-over-zone").ondragleave = function(){
+	alert("drag leave");
+}
+document.getElementById("drag-over-zone").ondrop = function(event){
+	event.preventDefault();
+  const file = event.dataTransfer.files[0];
+  console.log(file);
 }
 </script>
