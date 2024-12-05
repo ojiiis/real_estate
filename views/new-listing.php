@@ -12,6 +12,7 @@
 							</div>
 						</div>
 						<div class="col-lg-12">
+							<?php if($_GET['step'] == 0){ ?>
 							<div class="my_dashboard_review">
 								<div class="row">
 									<div class="col-lg-12">
@@ -78,12 +79,13 @@
 									</div>
 									<div class="col-xl-12">
 										<div class="my_profile_setting_input">
-											<button class="btn btn1 float-left">Back</button>
+											
 											<button class="btn btn2 float-right">Next</button>
 										</div>
 									</div>
 								</div>
 							</div>
+							<?php }else if($_GET['step'] == 1){ ?>
 							<div class="my_dashboard_review mt30">
 								<div class="row">
 									<div class="col-lg-12">
@@ -185,6 +187,7 @@
 									</div>
 								</div>
 							</div>
+							<?php }else if($_GET['step'] == 2){ ?>
 							<div class="my_dashboard_review mt30">
 								<div class="row">
 									<div class="col-lg-12">
@@ -375,6 +378,7 @@
 									</div>
 								</div>
 							</div>
+							<?php }else if($_GET['step'] == 3){ ?>
 							<div class="my_dashboard_review mt30">
 								<div class="row">
 									<div class="col-lg-12">
@@ -402,8 +406,13 @@
 											</li>
 										</ul>
 									</div>
-									<div class="col-lg-12" id="drag-over-zone">
-										<div class="portfolio_upload">
+									<style>
+										.dragged{
+											background:orange
+										}
+									</style>
+									<div class="col-lg-12">
+										<div class="portfolio_upload" id="drag-over-zone">
 											<input type="file" name="myfile" />
 											<div class="icon"><span class="flaticon-download"></span></div>
 											<p>Drag and drop images here</p>
@@ -429,6 +438,7 @@
 									</div>
 								</div>
 							</div>
+							<?php }else if($_GET['step'] == 4){ ?>
 							<div class="my_dashboard_review mt30">
 								<div class="row">
 									<div class="col-lg-12">
@@ -499,6 +509,7 @@
 									</div>
 								</div>
 							</div>
+							<?php } ?>
 						</div>
 					</div>
 					<div class="row mt50">
@@ -535,15 +546,16 @@ stateInput.onchange = async function(){
 	
 }
 document.getElementById("drag-over-zone").ondragover = function(){
-	alert("drag over");
+	this.classList.add("dragged");
 }
 
 document.getElementById("drag-over-zone").ondragleave = function(){
-	alert("drag leave");
+	this.classList.remove("dragged");
 }
-document.getElementById("drag-over-zone").ondrop = function(event){
-	event.preventDefault();
-  const file = event.dataTransfer.files[0];
+document.getElementById("drag-over-zone").ondrop = function(e){
+	this.classList.remove("dragged");
+	e.preventDefault();
+  const file = e.dataTransfer.files[0];
   console.log(file);
 }
 </script>

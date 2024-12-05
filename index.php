@@ -31,7 +31,7 @@ if($_REQ['url'] == $startPath."/listing" || $_REQ['url'] == $startPath."/listing
     include "footer.php";
 }else
 if($_REQ['url'] == $startPath."/new" || $_REQ['url'] == $startPath."/new/"){
-       
+       $_GET['step'] = (!isset($_GET['step']))?0:$_GET['step'];
              include "header-user.php";
           include "views/new-listing.php";
          include "footer-user.php";
