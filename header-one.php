@@ -46,7 +46,7 @@
 		}
 		#error-modal-inner{
 			max-height:90%;
-			width: 50%;
+			width: 90%;
 		}
 	</style>
 <div id="error-modal">

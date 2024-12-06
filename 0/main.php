@@ -40,6 +40,30 @@ function userData($id){
     }
     return false;
 }
+function getDraft($id){
+     global $connection;
+    $id = mysqli_real_escape_string($connection,$id);
+    $query = "SELECT * FROM `draft` WHERE  `user_id`='".$id."' ";
+    $run = mysqli_query($connection,$query);
+    if($run->num_rows > 0){
+        foreach($run as $row){
+        return $row['property_id'];
+    }
+    }
+return false;
+}
+function draftData($id){
+     global $connection;
+    $id = mysqli_real_escape_string($connection,$id);
+    $query = "SELECT * FROM `products` WHERE  `property_id`='".$id."' ";
+    $run = mysqli_query($connection,$query);
+    if($run->num_rows > 0){
+        foreach($run as $row){
+        return $row;
+    }
+    }
+return false;
+}
 function is_username($key){
        global $connection;
     $key = mysqli_real_escape_string($connection,$key);
@@ -61,3 +85,4 @@ return true;
 function is_city($key){
 return true;
 }
+

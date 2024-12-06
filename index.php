@@ -1,6 +1,8 @@
 <?php
+session_start();
 include "0/main.php";
 include "0/nigeria.php";
+include "0/property_schemma.php";
 $startPath = "";
 if($devSetting["development"] == 1){
    $startPath = $devSetting["devUrl"]; 
@@ -10,7 +12,7 @@ $parse = explode('?',$_SERVER['REQUEST_URI']);
 $_REQ['url'] = $parse[0];
 $_REQ['query'] = (count($parse) > 1)?$parse[1]:'';
 if(isset($_GET['auth'])){
- session_start();
+
  if(userData($_GET['auth'])){
 $_SESSION['user_id'] = $_GET['auth'];
  header('Location: ./'.userData($_GET['auth'])['username']); 
@@ -32,6 +34,7 @@ if($_REQ['url'] == $startPath."/listing" || $_REQ['url'] == $startPath."/listing
 }else
 if($_REQ['url'] == $startPath."/new" || $_REQ['url'] == $startPath."/new/"){
        $_GET['step'] = (!isset($_GET['step']))?0:$_GET['step'];
+       $draft = (getDraft($_SESSION['user_id']))?draftData(getDraft($_SESSION['user_id'])):false;
              include "header-user.php";
           include "views/new-listing.php";
          include "footer-user.php";
@@ -58,4 +61,4 @@ if(preg_match('/'.$devSetting["devUrlPattern"].'\/([a-zA-Z0-9_]+)/',$_REQ['url']
 
 
 ?>
-<script src="js/client.js"></script>
+<script src="js/client.js?id=<?php echo strtotime('now'); ?>"></script>

@@ -1,0 +1,7 @@
+post new property request:
+
+step1 url:
+/api/totwo
+payload sample:
+{"user_id":"zwiXoOzKG0eFyQBrBkU8GMq1MQiucM","property_title":"a","description":"a","type":"Type1","status":"Status2","price":"2","area":"2","rooms":"1"}
+response sample:

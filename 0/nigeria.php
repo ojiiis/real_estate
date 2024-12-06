@@ -7,7 +7,7 @@ $nigeria = [
             'Ohafia', 'Osisioma', 'Ugwunagbo', 'Ukwa East', 'Ukwa West',
             'Umuahia North', 'Umuahia South', 'Umu Nneochi'
         ],
-        'cordinate' => ['lat' => 5.4527, 'log' => 7.5248]
+        'cordinate' => ['lat' => 5.4527, 'long' => 7.5248]
     ],
     'Adamawa'=>[
         'cities' => [
@@ -17,7 +17,7 @@ $nigeria = [
             'Mubi South', 'Numan', 'Shelleng', 'Song', 'Toungo',
             'Yola North', 'Yola South'
         ],
-        'cordinate' => ['lat' => 9.3265, 'log' => 12.3984]
+        'cordinate' => ['lat' => 9.3265, 'long' => 12.3984]
     ],
     'Akwa Ibom'=>[
         'cities' => [
@@ -28,7 +28,7 @@ $nigeria = [
             'Okobo', 'Onna', 'Oron', 'Oruk Anam', 'Udung-Uko',
             'Ukanafun', 'Uruan', 'Urue-Offong/Oruko', 'Uyo'
         ],
-        'cordinate' => ['lat' => 5.0389, 'log' => 7.9094]
+        'cordinate' => ['lat' => 5.0389, 'long' => 7.9094]
     ],
     'Anambra'=>[
         'cities' => [
@@ -38,7 +38,7 @@ $nigeria = [
             'Ogbaru', 'Onitsha North', 'Onitsha South', 'Orumba North', 'Orumba South',
             'Oyi'
         ],
-        'cordinate' => ['lat' => 6.2100, 'log' => 7.0700]
+        'cordinate' => ['lat' => 6.2100, 'long' => 7.0700]
     ],
     'Bauchi'=> [
         
@@ -48,14 +48,14 @@ $nigeria = [
             'Jama’are', 'Katagum', 'Kirfi', 'Misau', 'Ningi',
             'Shira', 'Tafawa Balewa', 'Toro', 'Warji', 'Zaki'
         ],
-        'cordinate' => ['lat' => 10.3158, 'log' => 9.8442]
+        'cordinate' => ['lat' => 10.3158, 'long' => 9.8442]
     ],
     'Bayelsa'=>[
         'cities' => [
             'Brass', 'Ekeremor', 'Kolokuma/Opokuma', 'Nembe', 'Ogbia',
             'Sagbama', 'Southern Ijaw', 'Yenagoa'
         ],
-        'cordinate' => ['lat' => 4.7719, 'log' => 6.0699]
+        'cordinate' => ['lat' => 4.7719, 'long' => 6.0699]
     ],
      'Benue'=>[
         'cities' => [
@@ -65,7 +65,7 @@ $nigeria = [
             'Ohimini', 'Oju', 'Okpokwu', 'Otukpo', 'Tarka',
             'Ukum', 'Ushongo', 'Vandeikya'
         ],
-        'cordinate' => ['lat' => 7.7378, 'log' => 8.5216]
+        'cordinate' => ['lat' => 7.7378, 'long' => 8.5216]
     ],
     'Borno'=> [
         'cities' => [
@@ -76,7 +76,7 @@ $nigeria = [
             'Maiduguri', 'Marte', 'Mobbar', 'Monguno', 'Ngala',
             'Nganzai', 'Shani'
         ],
-        'cordinate' => ['lat' => 11.8333, 'log' => 13.1510]
+        'cordinate' => ['lat' => 11.8333, 'long' => 13.1510]
     ],
     'Cross River'=>[
         'cities' => [
@@ -85,7 +85,7 @@ $nigeria = [
             'Ikom', 'Obanliku', 'Obubra', 'Obudu', 'Odukpani',
             'Ogoja', 'Yakuur', 'Yala'
         ],
-        'cordinate' => ['lat' => 5.9631, 'log' => 8.3327]
+        'cordinate' => ['lat' => 5.9631, 'long' => 8.3327]
     ],
     'Delta'=>[
         'cities' => [
@@ -95,14 +95,14 @@ $nigeria = [
             'Patani', 'Sapele', 'Udu', 'Ughelli North', 'Ughelli South',
             'Ukwuani', 'Uvwie', 'Warri North', 'Warri South', 'Warri South West'
         ],
-        'cordinate' => ['lat' => 5.8904, 'log' => 5.6806]
+        'cordinate' => ['lat' => 5.8904, 'long' => 5.6806]
     ],
     'Ebonyi'=>[
         'cities' => [
             'Abakaliki', 'Afikpo North', 'Afikpo South', 'Ebonyi', 'Ezza North',
             'Ezza South', 'Ikwo', 'Ishielu', 'Ivo', 'Izzi', 'Ohaozara', 'Ohaukwu', 'Onicha'
         ],
-        'cordinate' => ['lat' => 6.2649, 'log' => 8.0130]
+        'cordinate' => ['lat' => 6.2649, 'long' => 8.0130]
     ],
     'Edo'=>[
         'cities' => [
@@ -111,7 +111,7 @@ $nigeria = [
             'Ikpoba-Okha', 'Orhionmwon', 'Oredo', 'Ovia North-East', 'Ovia South-West',
             'Owan East', 'Owan West', 'Uhunmwonde'
         ],
-        'cordinate' => ['lat' => 6.5244, 'log' => 5.2311]
+        'cordinate' => ['lat' => 6.5244, 'long' => 5.2311]
     ],
         'Ekiti'=>[
         'cities' => [
@@ -119,7 +119,7 @@ $nigeria = [
             'Emure', 'Gbonyin', 'Ido Osi', 'Ijero', 'Ikere',
             'Ikole', 'Ilejemeje', 'Irepodun/Ifelodun', 'Ise/Orun', 'Moba', 'Oye'
         ],
-        'cordinate' => ['lat' => 7.7199, 'log' => 5.3111]
+        'cordinate' => ['lat' => 7.7199, 'long' => 5.3111]
     ],
     'Enugu'=>[
         'cities' => [
@@ -127,14 +127,14 @@ $nigeria = [
             'Ezeagu', 'Igbo Etiti', 'Igbo Eze North', 'Igbo Eze South', 'Isi Uzo',
             'Nkanu East', 'Nkanu West', 'Nsukka', 'Oji River', 'Udenu', 'Udi', 'Uzo-Uwani'
         ],
-        'cordinate' => ['lat' => 6.5244, 'log' => 7.5100]
+        'cordinate' => ['lat' => 6.5244, 'long' => 7.5100]
     ],
     'Gombe'=>[
         'cities' => [
             'Akko', 'Balanga', 'Billiri', 'Dukku', 'Funakaye',
             'Gombe', 'Kaltungo', 'Kwami', 'Nafada', 'Shongom', 'Yamaltu/Deba'
         ],
-        'cordinate' => ['lat' => 10.2897, 'log' => 11.1717]
+        'cordinate' => ['lat' => 10.2897, 'long' => 11.1717]
     ],
     'Imo'=>[
         'cities' => [
@@ -144,7 +144,7 @@ $nigeria = [
             'Obowo', 'Oguta', 'Ohaji/Egbema', 'Okigwe', 'Orlu',
             'Orsu', 'Oru East', 'Oru West', 'Owerri Municipal', 'Owerri North', 'Owerri West'
         ],
-        'cordinate' => ['lat' => 5.4850, 'log' => 7.0350]
+        'cordinate' => ['lat' => 5.4850, 'long' => 7.0350]
     ],
     'Jigawa'=>[
         'cities' => [
@@ -154,7 +154,7 @@ $nigeria = [
             'Kaugama', 'Kazaure', 'Kiri Kasama', 'Kiyawa', 'Maigatari',
             'Malam Madori', 'Miga', 'Ringim', 'Roni', 'Sule Tankarkar', 'Taura', 'Yankwashi'
         ],
-        'cordinate' => ['lat' => 12.2286, 'log' => 9.5616]
+        'cordinate' => ['lat' => 12.2286, 'long' => 9.5616]
     ],
     'Kaduna'=>[
         'cities' => [
@@ -164,7 +164,7 @@ $nigeria = [
             'Kudan', 'Lere', 'Makarfi', 'Sabon Gari', 'Sanga',
             'Soba', 'Zangon Kataf', 'Zaria'
         ],
-        'cordinate' => ['lat' => 10.6093, 'log' => 7.4296]
+        'cordinate' => ['lat' => 10.6093, 'long' => 7.4296]
     ],
        'Kano'=> [
         'cities' => [
@@ -178,7 +178,7 @@ $nigeria = [
             'Takai', 'Tarauni', 'Tofa', 'Tsanyawa', 'Tudun Wada',
             'Ungogo', 'Warawa', 'Wudil'
         ],
-        'cordinate' => ['lat' => 12.0022, 'log' => 8.5919]
+        'cordinate' => ['lat' => 12.0022, 'long' => 8.5919]
     ],
     'Katsina'=>[
         'cities' => [
@@ -190,7 +190,7 @@ $nigeria = [
             'Mani', 'Mashi', 'Matazu', 'Musawa', 'Rimi',
             'Sabuwa', 'Safana', 'Sandamu', 'Zango'
         ],
-        'cordinate' => ['lat' => 12.9882, 'log' => 7.6170]
+        'cordinate' => ['lat' => 12.9882, 'long' => 7.6170]
     ],
     'Kebbi'=>[
         'cities' => [
@@ -199,7 +199,7 @@ $nigeria = [
             'Jega', 'Kalgo', 'Koko/Besse', 'Maiyama', 'Ngaski',
             'Sakaba', 'Shanga', 'Suru', 'Wasagu/Danko', 'Yauri', 'Zuru'
         ],
-        'cordinate' => ['lat' => 12.4500, 'log' => 4.1998]
+        'cordinate' => ['lat' => 12.4500, 'long' => 4.1998]
     ],
     'Kogi'=>[
         'cities' => [
@@ -208,7 +208,7 @@ $nigeria = [
             'Kogi', 'Lokoja', 'Mopa-Muro', 'Ofu', 'Ogori/Magongo',
             'Okehi', 'Okene', 'Olamaboro', 'Omala', 'Yagba East', 'Yagba West'
         ],
-        'cordinate' => ['lat' => 7.8023, 'log' => 6.7333]
+        'cordinate' => ['lat' => 7.8023, 'long' => 6.7333]
     ],
     'Kwara'=>[
         'cities' => [
@@ -216,7 +216,7 @@ $nigeria = [
             'Ilorin East', 'Ilorin South', 'Ilorin West', 'Irepodun', 'Isin',
             'Kaiama', 'Moro', 'Offa', 'Oke Ero', 'Oyun', 'Pategi'
         ],
-        'cordinate' => ['lat' => 8.9669, 'log' => 4.5651]
+        'cordinate' => ['lat' => 8.9669, 'long' => 4.5651]
     ],
     'Lagos'=>[
         'cities' => [
@@ -225,14 +225,14 @@ $nigeria = [
             'Ikeja', 'Ikorodu', 'Kosofe', 'Lagos Island', 'Lagos Mainland',
             'Mushin', 'Ojo', 'Oshodi-Isolo', 'Shomolu', 'Surulere'
         ],
-        'cordinate' => ['lat' => 6.5244, 'log' => 3.3792]
+        'cordinate' => ['lat' => 6.5244, 'long' => 3.3792]
     ],
         'Nasarawa'=>[
         'cities' => [
             'Akwanga', 'Awe', 'Doma', 'Karu', 'Keana',
             'Keffi', 'Kokona', 'Lafia', 'Nasarawa', 'Nasarawa Egon', 'Obi', 'Toto', 'Wamba'
         ],
-        'cordinate' => ['lat' => 8.5400, 'log' => 8.5200]
+        'cordinate' => ['lat' => 8.5400, 'long' => 8.5200]
     ],
     'Niger'=>[
         'cities' => [
@@ -242,7 +242,7 @@ $nigeria = [
             'Mokwa', 'Muya', 'Paikoro', 'Rafi', 'Rijau',
             'Shiroro', 'Suleja', 'Tafa', 'Wushishi'
         ],
-        'cordinate' => ['lat' => 9.9300, 'log' => 6.5700]
+        'cordinate' => ['lat' => 9.9300, 'long' => 6.5700]
     ],
     'Ogun'=>[
         'cities' => [
@@ -251,7 +251,7 @@ $nigeria = [
             'Ijebu Ode', 'Ikenne', 'Imeko Afon', 'Ipokia', 'Obafemi-Owode',
             'Odeda', 'Odogbolu', 'Remo North', 'Shagamu'
         ],
-        'cordinate' => ['lat' => 7.1600, 'log' => 3.3500]
+        'cordinate' => ['lat' => 7.1600, 'long' => 3.3500]
     ],
     'Ondo'=>[
         'cities' => [
@@ -260,7 +260,7 @@ $nigeria = [
             'Ilaje', 'Ile Oluji/Okeigbo', 'Irele', 'Odigbo', 'Okitipupa',
             'Ondo East', 'Ondo West', 'Ose', 'Owo'
         ],
-        'cordinate' => ['lat' => 7.2500, 'log' => 5.2000]
+        'cordinate' => ['lat' => 7.2500, 'long' => 5.2000]
     ],
     'Osun'=>[
         'cities' => [
@@ -271,7 +271,7 @@ $nigeria = [
             'Irewole', 'Isokan', 'Iwo', 'Obokun', 'Odo Otin',
             'Ola Oluwa', 'Olorunda', 'Oriade', 'Orolu', 'Osogbo'
         ],
-        'cordinate' => ['lat' => 7.5000, 'log' => 4.5500]
+        'cordinate' => ['lat' => 7.5000, 'long' => 4.5500]
     ],
     'Oyo'=>[
         'cities' => [
@@ -283,7 +283,7 @@ $nigeria = [
             'Orelope', 'Ori Ire', 'Oyo East', 'Oyo West', 'Saki East',
             'Saki West', 'Surulere'
         ],
-        'cordinate' => ['lat' => 7.8400, 'log' => 3.9300]
+        'cordinate' => ['lat' => 7.8400, 'long' => 3.9300]
     ],
     'Plateau'=>[
         'cities' => [
@@ -291,7 +291,7 @@ $nigeria = [
             'Jos South', 'Kanam', 'Kanke', 'Langtang North', 'Langtang South',
             'Mangu', 'Mikang', 'Pankshin', 'Qua\'an Pan', 'Riyom', 'Shendam', 'Wase'
         ],
-        'cordinate' => ['lat' => 9.2182, 'log' => 9.5174]
+        'cordinate' => ['lat' => 9.2182, 'long' => 9.5174]
     ],
     'Rivers'=>[
         'cities' => [
@@ -301,7 +301,7 @@ $nigeria = [
             'Ogba/Egbema/Ndoni', 'Ogu/Bolo', 'Okrika', 'Omuma', 'Opobo/Nkoro',
             'Oyigbo', 'Port Harcourt', 'Tai'
         ],
-        'cordinate' => ['lat' => 4.8156, 'log' => 7.0498]
+        'cordinate' => ['lat' => 4.8156, 'long' => 7.0498]
     ],
     'Sokoto'=>[
         'cities' => [
@@ -311,7 +311,7 @@ $nigeria = [
             'Sokoto North', 'Sokoto South', 'Tambuwal', 'Tangaza', 'Tureta',
             'Wamako', 'Wurno', 'Yabo'
         ],
-        'cordinate' => ['lat' => 13.0588, 'log' => 5.2432]
+        'cordinate' => ['lat' => 13.0588, 'long' => 5.2432]
     ],
     'Taraba'=>[
         'cities' => [
@@ -319,7 +319,7 @@ $nigeria = [
             'Ibi', 'Jalingo', 'Karim Lamido', 'Kumi', 'Lau',
             'Sardauna', 'Takum', 'Ussa', 'Wukari', 'Yorro', 'Zing'
         ],
-        'cordinate' => ['lat' => 8.8904, 'log' => 11.3635]
+        'cordinate' => ['lat' => 8.8904, 'long' => 11.3635]
     ],
     'Yobe'=>[
         'cities' => [
@@ -328,7 +328,7 @@ $nigeria = [
             'Machina', 'Nangere', 'Nguru', 'Potiskum', 'Tarmuwa',
             'Yunusari', 'Yusufari'
         ],
-        'cordinate' => ['lat' => 12.0000, 'log' => 11.5000]
+        'cordinate' => ['lat' => 12.0000, 'long' => 11.5000]
     ],
     'Zamfara'=>[
         'cities' => [
@@ -336,7 +336,7 @@ $nigeria = [
             'Gummi', 'Gusau', 'Kaura Namoda', 'Maradun', 'Maru',
             'Shinkafi', 'Talata Mafara', 'Tsafe', 'Zurmi'
         ],
-        'cordinate' => ['lat' => 12.1667, 'log' => 6.2500]
+        'cordinate' => ['lat' => 12.1667, 'long' => 6.2500]
     ]
 ];
 

@@ -24,7 +24,7 @@
 		         };
                  const req = await fetch(url,options); 
 		         const res = await req.json();
-
+                 
                  if(!res.status){
                     var err;
                     res.data?.error.forEach((item)=>{
@@ -48,6 +48,11 @@
                    
                     default:
                     }
+                    
+                 }
+                 
+                 if(res.data?.redirect){
+                   location = "./"+res.data.redirect;
                  }
 		   
             }
@@ -63,3 +68,8 @@
         }
     }
 
+   if(document.getElementById("totwo")){
+     document.getElementById("totwo").onclick = ()=>{
+        
+    }
+   }

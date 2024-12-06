@@ -1,5 +1,4 @@
 <?php 
-session_start();
 if(!isset($_SESSION['user_id'])){
 header('Location: ./');
 }
@@ -38,7 +37,30 @@ header('Location: ./');
 <body>
 <div class="wrapper">
 	<div class="preloader"></div>
+	<style>
+		#error-modal{
+			width: 100%;
+			height:100%;
+			background:rgb(0,0,0,0.5);
+			position: fixed;
+			left:0;
+			top:0;
+			z-index: 9999;
+			display:none;
+			justify-content:center;
+			align-items:center;
+		}
+		#error-modal-inner{
+			max-height:90%;
+			width: 90%;
+		}
+	</style>
+<div id="error-modal">
+	<div id="error-modal-inner">
 
+
+	</div>
+</div>
 	<!-- Main Header Nav -->
 	<header class="header-nav menu_style_home_one style2 menu-fixed main-menu">
 		<div class="container-fluid p0">
