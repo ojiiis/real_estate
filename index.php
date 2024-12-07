@@ -1,8 +1,9 @@
 <?php
 session_start();
-include "0/main.php";
-include "0/nigeria.php";
 include "0/property_schemma.php";
+include "0/nigeria.php";
+include "0/main.php";
+
 $startPath = "";
 if($devSetting["development"] == 1){
    $startPath = $devSetting["devUrl"]; 
@@ -35,6 +36,7 @@ if($_REQ['url'] == $startPath."/listing" || $_REQ['url'] == $startPath."/listing
 if($_REQ['url'] == $startPath."/new" || $_REQ['url'] == $startPath."/new/"){
        $_GET['step'] = (!isset($_GET['step']))?0:$_GET['step'];
        $draft = (getDraft($_SESSION['user_id']))?draftData(getDraft($_SESSION['user_id'])):false;
+       $_GET['user_id'] = $_SESSION['user_id'];
              include "header-user.php";
           include "views/new-listing.php";
          include "footer-user.php";
@@ -47,7 +49,14 @@ if(preg_match('/'.$devSetting["devUrlPattern"].'\/([a-zA-Z0-9_]+)/',$_REQ['url']
          include "footer-user.php";
       }else
       if(is_state($match[1])){
-        
+       //   echo 'its a state';
+       
+       $id = explode("-",$_REQ['url'])[count(explode("-",$_REQ['url'])) - 1];
+        $id = ($id[strlen($id) - 1] == "/")?substr($id,0,-1):$id;
+         $property = productData($id);
+              include "header-one.php";
+    include "views/property.php";
+    include "footer.php";
       }else
        if(is_city($match[1])){
         

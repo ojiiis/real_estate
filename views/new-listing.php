@@ -242,81 +242,92 @@
 									<div class="col-lg-6 col-xl-8">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="propertyASize">Area Size</label>
-									    	<input type="text" class="form-control" id="propertyASize" name="area_size">
+									    	<input type="text" class="form-control" id="propertyASize" value="<?php echo ($draft)?$draft['area_size']:''; ?>" name="area_size">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="sizePrefix">Size Prefix</label>
-									    	<input type="text" class="form-control" id="sizePrefix" name="size_prefix">
+									    	<input type="text" class="form-control" id="sizePrefix" value="<?php echo ($draft)?$draft['size_prefix']:''; ?>" name="size_prefix">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="landArea">Land Area</label>
-									    	<input type="text" class="form-control" id="landArea" name="land_area">
+									    	<input type="text" class="form-control" id="landArea"  value="<?php echo ($draft)?$draft['land_area']:''; ?>" name="land_area">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="LASPostfix">Land Area Size Postfix</label>
-									    	<input type="text" class="form-control" id="LASPostfix"  name="land_area_size_postfix">
+									    	<input type="text" class="form-control" id="LASPostfix" value="<?php echo ($draft)?$draft['land_area_size_postfix']:''; ?>"  name="land_area_size_postfix">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="bedRooms">Bedrooms</label>
-									    	<input type="text" class="form-control" id="bedRooms" name="bedrooms">
+									    	<input type="number" class="form-control" id="bedRooms" value="<?php echo ($draft)?$draft['bedrooms']:''; ?>" name="bedrooms">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="bathRooms">Bathrooms</label>
-									    	<input type="text" class="form-control" id="bathRooms" name="bathrooms">
+									    	<input type="number" class="form-control" id="bathRooms"  value="<?php echo ($draft)?$draft['bathrooms']:''; ?>" name="bathrooms">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="garages">Garages</label>
-									    	<input type="text" class="form-control" id="garages" name="garages">
+									    	<input type="text" class="form-control" id="garages" value="<?php echo ($draft)?$draft['garages']:''; ?>"  name="garages">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="garagesSize">Garages Size</label>
-									    	<input type="text" class="form-control" id="garagesSize" name="garages_size">
+									    	<input type="text" class="form-control" id="garagesSize" value="<?php echo ($draft)?$draft['garages_size']:''; ?>"  name="garages_size">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="yearBuild">Year Built</label>
-									    	<input type="text" class="form-control" id="yearBuild"  name="year_build">
+									    	<input type="text" class="form-control" id="yearBuild" value="<?php echo ($draft)?$draft['year_built']:''; ?>"   name="year_built">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="videoUrl">Video URL</label>
-									    	<input type="text" class="form-control" id="videoUrl"   name="video_url">
+									    	<input type="text" class="form-control" id="videoUrl" value="<?php echo ($draft)?$draft['video_url']:''; ?>"     name="video_url">
 										</div>
 									</div>
 									<div class="col-lg-6 col-xl-4">
 										<div class="my_profile_setting_input form-group">
 									    	<label for="virtualTour">360° Virtual Tour</label>
-									    	<input type="text" class="form-control" id="virtualTour"   name="virtual_tour_url">
+									    	<input type="text" class="form-control" id="virtualTour" value="<?php echo ($draft)?$draft['virtual_tour_url']:''; ?>"    name="virtual_tour_url">
 										</div>
 									</div>
 							        <div class="col-xl-12">
 							        	<h4>Amenities</h4>
 							        </div>
-							        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-2" style="display:flex;flex-wrap:wrap">
+							        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12" style="display:flex;flex-wrap:wrap">
 						                  <?php 
 										 foreach($ps["amenities"] as $am){
                                             ?>
-											 <div class="custom-control custom-checkbox" style="margin:10px;flex-shrink:0">
-													<input type="checkbox" name="amenities" id="<?php echo $am;?>" value="<?php echo $am;?>">
-													<label  for="<?php echo $am;?>"><?php echo $am;?></label>
+											    <div class="custom-control custom-checkbox animated-check" style="margin:10px;flex-shrink:0" >
+													<input 
+													type="checkbox" 
+													id="<?php echo str_replace(" ","_",$am);?>" 
+													value="<?php echo $am;?>" 
+													<?php 
+													$ams = explode(",",$draft['amenities']);
+													if(in_array($am,$ams)){
+                                                        echo "checked";
+													}
+													?>
+													>
+													<label  for="<?php echo str_replace(" ","_",$am);?>"><?php echo $am;?></label>
 												</div>
-											<?php  } ?>		
+											<?php  } ?>	
+											<input type="hidden" name="amenities" value="" id="amenities">	
 							        </div>
 							        
 									<div class="col-xl-12">
@@ -329,17 +340,37 @@
 							</div>
 										</form>
 							<?php }else if($_GET['step'] == 3){ ?>
+
+								  <form action="/tofive">
+										<input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+										<?php if($draft){ ?>
+									<input type="hidden" name="property_id" value="<?php echo $draft['property_id']; ?>" id="property_id">
+		                                <?php } ?>
 							<div class="my_dashboard_review mt30">
 								<div class="row">
 									<div class="col-lg-12">
 										<h4 class="mb30">Property media</h4>
 									</div>
 									<div class="col-lg-12">
-										<ul class="mb0">
-											<li class="list-inline-item">
+										<ul class="mb0" id="property_medias">
+											<?php 
+											if($draft["property_media"] && count(explode(",",$draft["property_media"])) > 0){
+												foreach(explode(",",$draft["property_media"]) as $media){
+													?>
+													<li class="list-inline-item">
+												<div class="portfolio_item">
+													<img class="img-fluid" src="media/<?php echo $media; ?>" alt="<?php echo $media; ?>">
+								    				<div class="edu_stats_list" data-media='<?php echo $media; ?>' data-toggle="tooltip" data-placement="top" title="Delete" data-original-title="Delete"><a href="#"><span class="flaticon-garbage"></span></a></div>
+												</div>
+											</li>
+													<?php
+												}
+											}
+											?>
+											<!-- <li class="list-inline-item">
 												<div class="portfolio_item">
 													<img class="img-fluid" src="images/property/fp1.jpg" alt="fp1.jpg">
-								    				<div class="edu_stats_list" data-toggle="tooltip" data-placement="top" title="Delete" data-original-title="Delete"><a href="#"><span class="flaticon-garbage"></span></a></div>
+								    				<div class="edu_stats_list" data-media='${res.data?.media}' data-toggle="tooltip" data-placement="top" title="Delete" data-original-title="Delete"><a href="#"><span class="flaticon-garbage"></span></a></div>
 												</div>
 											</li>
 											<li class="list-inline-item">
@@ -353,41 +384,55 @@
 													<img class="img-fluid" src="images/property/fp3.jpg" alt="fp3.jpg">
 								    				<div class="edu_stats_list" data-toggle="tooltip" data-placement="top" title="Delete" data-original-title="Delete"><a href="#"><span class="flaticon-garbage"></span></a></div>
 												</div>
-											</li>
+											</li> -->
 										</ul>
 									</div>
 									<style>
 										.dragged{
 											background:orange
 										}
+										#upload-bar{
+											width: 100%;
+											height:10px;
+											margin-bottom:20px;
+											border-radius:10px;
+											overflow:hidden;
+										}
+										#upload-per{
+											width: 0;
+											height:100%;;
+											background:green;
+										}
 									</style>
 									<div class="col-lg-12">
 										<div class="portfolio_upload" id="drag-over-zone">
 											<input type="file" name="myfile" />
 											<div class="icon"><span class="flaticon-download"></span></div>
-											<p>Drag and drop images here</p>
+											<p>Drag and drop image here</p>
 										</div>
+										<div id="upload-bar"><div id="upload-per"></div></div>
 									</div>
 									<div class="col-xl-6">
 										<div class="resume_uploader mb30">
 											<h4>Attachments</h4>
-											<form class="form-inline">
+											<div class="form-inline">
 												<input class="upload-path">
 												<label class="upload">
 												    <input type="file">
 												    Select Attachment
 												</label>
-											</form>
+											</div>
 										</div>
 									</div>
 									<div class="col-xl-12">
 										<div class="my_profile_setting_input">
-											<button class="btn btn1 float-left">Back</button>
-											<button class="btn btn2 float-right">Next</button>
+											<a class="btn btn1 float-left" href="new?step=2" style="display:flex; align-items:center;justify-content:center">Back</a>
+											<button class="btn btn2 float-right" type="submit">Next</button>
 										</div>
 									</div>
 								</div>
 							</div>
+									</form>
 							<?php }else if($_GET['step'] == 4){ ?>
 							<div class="my_dashboard_review mt30">
 								<div class="row">
@@ -474,8 +519,14 @@
 		</div>
 	</section>
 <script>
-var stateInput = document.getElementById('propertyState');
-stateInput.onchange = async function(){
+
+	var amenities = `<?php echo ($draft && count(explode(",",$draft['amenities'])) > 0)?$draft['amenities']:[] ?>`;
+	 amenities = (amenities.length > 0)?amenities.split(","):[];
+	 if(document.getElementById("amenities")){
+		document.getElementById("amenities").value = amenities;
+	 }
+if(document.getElementById('propertyState')){
+	document.getElementById('propertyState').onchange = async function(){
 	const req = await fetch('./0/nigeria.php?state='+this.value);
 	const res = await req.json();
 	var data = `<label for="propertyCity">City</label>
@@ -495,6 +546,8 @@ stateInput.onchange = async function(){
 	document.getElementById("googleMapLat").value = res.cordinate.lat;
 	document.getElementById("googleMapLong").value = res.cordinate.long;
 }
+}
+if(document.getElementById("drag-over-zone")){
 document.getElementById("drag-over-zone").ondragover = function(){
 	this.classList.add("dragged");
 }
@@ -505,7 +558,64 @@ document.getElementById("drag-over-zone").ondragleave = function(){
 document.getElementById("drag-over-zone").ondrop = function(e){
 	this.classList.remove("dragged");
 	e.preventDefault();
+	var data = new FormData();
   const file = e.dataTransfer.files[0];
+  data.append('media',file);
+  data.append('property_id',document.getElementById("property_id").value);
+    data.append('user_id','<?php echo $_GET['user_id']; ?>');
+  var upload = new XMLHttpRequest();
+  upload.onreadystatechange = function(){
+	if(this.readyState == 4 && this.status == 200){
+		let res = JSON.parse(this.responseText);
+		if(res.data?.media){
+			document.getElementById("property_medias").innerHTML = `<li class="list-inline-item">
+												<div class="portfolio_item">
+													<img class="img-fluid" src="media/${res.data?.media}"  alt="${res.data?.media}">
+								    				<div class="edu_stats_list" data-media='${res.data?.media}' data-toggle="tooltip" data-placement="top" title="Delete" data-original-title="Delete"><a href="javascript:void(0)"><span class="flaticon-garbage"></span></a></div>
+												</div>
+											</li>` + document.getElementById("property_medias").innerHTML;
+           console.log();
+		}
+		document.getElementById("upload-per").style.width = `0%`;
+	}
+  }
+  upload.open('POST','./api/upload_property_media');
+  upload.upload.addEventListener('progress',function(event){
+        if(event.lengthComputable){
+    let totalSent = Math.round((event.loaded/event.total)* 100);
+	document.getElementById("upload-per").style.width = `${totalSent}%`;
+		}
+  });
+  upload.send(data);
   console.log(file);
+}
+}
+
+var animatedChecked = document.getElementsByClassName("animated-check");
+
+for(let a of animatedChecked){
+	a.onclick = function(){
+	      if(inArray(this.children[0].value,amenities)){
+			this.children[0].checked = false;
+			amenities = amenities.filter((i)=>{
+                 return i != this.children[0].value;
+			})
+		  }else{
+			this.children[0].checked = true;
+			amenities.push(this.children[0].value);
+		  }
+		  document.getElementById("amenities").value = amenities;
+        
+	}
+}
+
+function inArray(item,array){
+		var inArray = false;
+		for(let i of array){
+             if(i == item){
+              inArray = true;
+			 }
+		}
+		return inArray;
 }
 </script>

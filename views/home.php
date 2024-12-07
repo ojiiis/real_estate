@@ -556,11 +556,17 @@
 				</div>
 				<div class="col-lg-12">
 					<div class="feature_property_slider">
-						<div class="item">
-							<a href="page-listing-single-v1.html">
+						<?php 
+						 $randProperty = randProducts();
+						 foreach($randProperty as $property){
+							//echo explode(",",$property['property_media'])
+							//echo $property;
+							?>
+							<div class="item">
+							<a href="<?php echo  $property['state']."/".$property['city']."/".urlStr($property['property_title'])."-".$property['property_id']; ?>">
 								<div class="feat_property">
 									<div class="thumb">
-										<img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
+										<img class="img-whp" src="media/<?php echo explode(",",$property['property_media'])[0]; ?>" alt="<?php echo explode(",",$property['property_media'])[0]; ?>">
 										<div class="thmb_cntnt">
 											<ul class="tag mb0">
 												<li class="list-inline-item"><span>For Rent</span></li>
@@ -570,452 +576,35 @@
 												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
 												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
 											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
+											<span class="fp_price">₦<?php echo number_format($property['price'],2); ?><small>/mo</small></span>
 										</div>
 									</div>
 									<div class="details">
 										<div class="tc_content">
 											<p class="text-thm">Apartment</p>
 											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
+											<p><span class="flaticon-placeholder"></span> <?php echo $property['address']; ?></p>
 											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
+												<li class="list-inline-item"><span>Beds: <?php echo $property['bathrooms']; ?></span></li>
+												<li class="list-inline-item"><span>Baths: <?php echo $property['bedrooms']; ?></span></li>
 												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
 											</ul>
 										</div>
 										<div class="fp_footer">
 											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
+												<li class="list-inline-item"><span href="#" style="display:inline-block;height:40px;width:40px;border-radius:50%;overflow:hidden"><img style="width:40px" src="<?php echo userData($property['user_id'])['avi']; ?>" alt="<?php echo userData($property['user_id'])['fullname']; ?>"></span></li>
+												<li class="list-inline-item"><span href="#"><?php echo userData($property['user_id'])['fullname']; ?></span></li>
 											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
+											<div class="fp_pdate float-right"><?php echo timeElapsed(userData($property['user_id'])['date'])?></div>
 										</div>
 									</div>
 								</div>
 							</a>
 						</div>
-						<div class="item">
-							<a href="page-listing-single-v2.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp2.jpg" alt="fp2.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Rent</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v3.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp3.jpg" alt="fp3.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Sale</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v1.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Rent</span></li>
-												<li class="list-inline-item"><span>Featured</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v2.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp2.jpg" alt="fp2.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Rent</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v3.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp3.jpg" alt="fp3.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Sale</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v1.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Rent</span></li>
-												<li class="list-inline-item"><span>Featured</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v2.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp2.jpg" alt="fp2.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Rent</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v3.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp3.jpg" alt="fp3.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Sale</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v1.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp1.jpg" alt="fp1.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Rent</span></li>
-												<li class="list-inline-item"><span>Featured</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v2.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp2.jpg" alt="fp2.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Rent</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-						<div class="item">
-							<a href="page-listing-single-v3.html">
-								<div class="feat_property">
-									<div class="thumb">
-										<img class="img-whp" src="images/property/fp3.jpg" alt="fp3.jpg">
-										<div class="thmb_cntnt">
-											<ul class="tag mb0">
-												<li class="list-inline-item"><span>For Sale</span></li>
-											</ul>
-											<ul class="icon mb0">
-												<li class="list-inline-item"><span class="flaticon-transfer-1 text-white"></span></li>
-												<li class="list-inline-item"><span class="flaticon-heart text-white"></span></li>
-											</ul>
-											<span class="fp_price">₦13,000<small>/mo</small></span>
-										</div>
-									</div>
-									<div class="details">
-										<div class="tc_content">
-											<p class="text-thm">Apartment</p>
-											<h4>Renovated Apartment</h4>
-											<p><span class="flaticon-placeholder"></span> Admiralty way, Lekki, Lagos.</p>
-											<ul class="prop_details mb0">
-												<li class="list-inline-item"><span>Beds: 4</span></li>
-												<li class="list-inline-item"><span>Baths: 2</span></li>
-												<li class="list-inline-item"><span>Sq Ft: 5280</span></li>
-											</ul>
-										</div>
-										<div class="fp_footer">
-											<ul class="fp_meta float-left mb0">
-												<li class="list-inline-item"><span href="#"><img src="images/property/pposter1.png" alt="pposter1.png"></span></li>
-												<li class="list-inline-item"><span href="#">Ali Tufan</span></li>
-											</ul>
-											<div class="fp_pdate float-right">4 years ago</div>
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
+		
+							<?php
+						 }
+						?>
 					</div>
 				</div>
 			</div>

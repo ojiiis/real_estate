@@ -138,6 +138,65 @@ mysqli_query($connection,$query);
         
          $_RESPONSE["data"]["error"] = $er;
 }
+
+if($_REQ['url'] == $startPath."/tofour"){
+ $er = [];
+ 
+  if($_RESPONSE['status']){
+     $query = "UPDATE `products`
+SET 
+    `area_size` = '".$data["area_size"]."',
+    `size_prefix` = '".$data["size_prefix"]."',
+    `land_area` = '".$data["land_area"]."',
+    `land_area_size_postfix` = '".$data["land_area_size_postfix"]."',
+    `bedrooms` = '".$data["bedrooms"]."',
+    `bathrooms` = '".$data["bathrooms"]."',
+    `garages` = '".$data["garages"]."',
+    `garages_size` = '".$data["garages_size"]."',
+    `year_built` = '".$data["year_built"]."',
+    `video_url` = '".$data["video_url"]."',
+    `virtual_tour_url` = '".$data["virtual_tour_url"]."',
+    `amenities` = '".$data["amenities"]."'
+WHERE `property_id` = '".$data["property_id"]."'  && `user_id` = '".$data["user_id"]."' ";
+     mysqli_query($connection,$query);
+  $_RESPONSE["data"]["redirect"] = "new?step=3";
+  }
+
+   $_RESPONSE["data"]["error"] = $er;
+}
+
+if($_REQ['url'] == $startPath."/tofive"){
+ $er = [];
+ 
+  if($_RESPONSE['status']){
+        $query = "UPDATE `products`
+SET 
+    `property_media` = '".$data["amenities"]."'
+WHERE `property_id` = '".$data["property_id"]."'  && `user_id` = '".$data["user_id"]."' ";
+     mysqli_query($connection,$query);
+  $_RESPONSE["data"]["redirect"] = "new?step=4";
+  }
+ $_RESPONSE["data"]["error"] = $er;
+}
+
+if($_REQ['url'] == $startPath."/upload_property_media"){
+ $er = [];
+ 
+  if($_RESPONSE['status']){
+  $rename_Image = urlStr(productData($_POST["property_id"])["property_title"])."-".uid(20).".".pathinfo($_FILES["media"]["name"],PATHINFO_EXTENSION);
+ move_uploaded_file($_FILES["media"]["tmp_name"],'../media/'.$rename_Image);
+  // $fullpath = 'media/'.$rename_Image;
+   $newMedia = (count(explode(",",productData($_POST["property_id"])["property_media"])) > 1)?productData($_POST["property_id"])["property_media"].",".$rename_Image:$rename_Image;
+         $query = "UPDATE `products`
+SET 
+    `property_media` = '".$newMedia."'
+ WHERE `property_id` = '".$_POST["property_id"]."'  && `user_id` = '".$_POST["user_id"]."' ";
+     mysqli_query($connection,$query);
+    $_RESPONSE["data"]["media"] = $rename_Image;
+  }
+ $_RESPONSE["data"]["error"] = $er;
+}
+
 if(preg_match('/api\/([a-zA-Z0-9_]+)/',$_REQ['url'],$match)){
       if(is_username($match[1])){
          $_RESPONSE['status'] = true;
@@ -159,4 +218,5 @@ if(preg_match('/api\/([a-zA-Z0-9_]+)/',$_REQ['url'],$match)){
       }
 }
 echo json_encode($_RESPONSE);
+//print_r(count(explode(",",",")));
 //print_r($_REQ);
