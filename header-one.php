@@ -81,7 +81,20 @@
 		        <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
 		        <ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
 		            
-	                <li class="list-inline-item list_s"><a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg">Login/Register</span></a></li>
+	                <li class="list-inline-item list_s">
+					<?php 
+						if(isset($_SESSION['user_id'])){
+                          ?>
+						<a href="./<?php echo userData($_SESSION['user_id'])['username']; ?>" class="btn flaticon-user"> <span class="dn-lg"><?php echo shortStr(userData($_SESSION['user_id'])['fullname'],28);?></span></a>
+						
+						  <?php
+						}else{
+							?>
+						<a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg">Login/Register</span></a>	
+							<?php 
+						}
+						?>
+				    </li>
 	                <li class="list-inline-item add_listing"><a href="page-add-new-property.html"><span class="flaticon-plus"></span><span class="dn-lg"> Create Listing</span></a></li>
 		        </ul>
 		    </nav>
@@ -111,7 +124,22 @@
 		        <!-- Responsive Menu Structure-->
 		        <!--Note: declare the Menu style in the data-menu-style="horizontal" (options: horizontal, vertical, accordion) -->
 		        <ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
-		            <li class="list-inline-item list_s"><a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg">Login/Register</span></a></li>
+		            <li class="list-inline-item list_s">
+						<?php 
+						if(isset($_SESSION['user_id'])){
+                          ?>
+						<a href="./<?php echo userData($_SESSION['user_id'])['username']; ?>" class="btn flaticon-user"> <span class="dn-lg"><?php echo shortStr(userData($_SESSION['user_id'])['fullname'],28);?></span></a>
+						
+						  <?php
+						}else{
+							?>
+						<a href="#" class="btn flaticon-user" data-toggle="modal" data-target=".bd-example-modal-lg"> <span class="dn-lg">Login/Register</span></a>	
+							<?php 
+						}
+						?>
+						
+						
+					</li>
 	                <li class="list-inline-item add_listing"><a href="page-add-new-property.html"><span class="flaticon-plus"></span><span class="dn-lg"> Create Listing</span></a></li>
 		        </ul>
 		    </nav>
@@ -208,13 +236,13 @@
 										</div>
 										<hr>
 										<div class="form-group input-group">
-										    <input type="text" class="form-control" name="fullname" id="exampleInputName" placeholder="Fullname Name">
+										    <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Fullname">
 										    <div class="input-group-prepend">
 										    	<div class="input-group-text"><i class="flaticon-user"></i></div>
 										    </div>
 										</div>
 										<div class="form-group input-group">
-										    <input type="text" class="form-control" name="username" id="exampleInputName" placeholder="User Name">
+										    <input type="text" class="form-control" name="username" id="username" placeholder="Username">
 										    <div class="input-group-prepend">
 										    	<div class="input-group-text">@</div>
 										    </div>

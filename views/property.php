@@ -23,18 +23,23 @@
 					<div class="container-fluid p0">
 						<div class="row">
 							<div class="col-lg-12">
+							
 								<div class="main-banner-wrapper home10">
 								    <div class="banner-style-one owl-theme owl-carousel">
                                         <?php 
                                         $media = explode(",",$property['property_media']);
-                                        
+                                        $ml = count($media);
                                        foreach($media as $medias){
-                                    
-                                    // echo  '<div class="slide slide-one" style="background-image: url(media/'.$medias.');height: 600px;"></div>';  
-                                      //echo $medias;
-                                      echo  ' <div class="slide slide-one" style="background-image: url(images/home/1.jpg);height: 600px;"></div>
-								        <div class="slide slide-one" style="background-image: url(images/home/2.jpg);height: 600px;"></div>';  
+                                    ?>
+									
+									<div class="slide slide-one" style="background-image: url(media/<?php echo $medias; ?>);height: 600px;"></div>
+									<?php
                                             }
+											if($ml == 1){
+									?>
+									<div class="slide slide-one" style="background-image: url(media/<?php echo $medias; ?>);height: 600px;"></div>
+									<?php
+											}
                                         ?>
 								        
 								     
@@ -50,21 +55,16 @@
 				</div>
 			</div>
 			<div class="tab-pane fade" id="map_tabs" role="tabpanel" aria-labelledby="map-tab">
-			  	<div class="h600" id="map-canvas"></div>
+			  	<iframe class="h600 w100"  src="https://www.google.com/maps?q=<?php echo $property['latitude']; ?>,<?php echo $property['longitude']; ?>&hl=en&z=14&output=embed" frameborder="0" allowfullscreen></iframe>
 		  	</div>
 		  	<div class="tab-pane fade" id="street_view" role="tabpanel" aria-labelledby="street-view-tab">
-		  		<iframe class="h600 w100" src="https://www.google.com/maps/embed?pb=!4v1553797194458!6m8!1m7!1sR4K_5Z2wRHTk9el8KLTh9Q!2m2!1d<?php echo $property['latitude']; ?>!2d<?php echo $property['longitude']; ?>!3f305.15097!4f0!5f0.7820865974627469" frameborder="0" allowfullscreen></iframe>
+		  		<iframe class="h600 w100"  src="https://www.google.com/maps?q=<?php echo $property['latitude']; ?>,<?php echo $property['longitude']; ?>&hl=en&z=14&output=embed" frameborder="0" allowfullscreen></iframe>
 		  	</div>
 		</div>
 	</div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1d<?php echo $property['latitude']; ?>!2d<?php echo $property['longitude']; ?>!3f305.15097!4f0!5f0.7820865974627469"
-       width="600" 
-    height="450" 
-    style="border:0;" 
-    allowfullscreen="" 
-    loading="lazy"
-        ></iframe>
-	<!-- Agent Single Grid View -->
+ 
+
+  <!-- Agent Single Grid View -->
 	<section class="our-agent-single bgc-f7 pb30-991">
 		<div class="container">
 			<div class="row">
@@ -185,7 +185,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-12">
+						<!--div class="col-lg-12">
 							<div class="property_attachment_area">
 								<h4 class="mb30">Property Attachments</h4>
 								<div class="iba_container style2">
@@ -203,7 +203,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div-->
 						<div class="col-lg-12">
 							<div class="application_statics mt30">
 								<div class="row">
@@ -233,14 +233,12 @@
 								<h4 class="mb30">Location <small class="float-right"><?php echo $property["address"]; ?></small></h4>
 								<div class="property_video p0">
 									<div class="thumb">
-										<div class="h400" id="map-canvas2"></div>
-										<div class="overlay_icon">
-											<a href="#"><img class="map_img_icon" src="images/header-logo.png" alt="header-logo.png"></a>
-										</div>
+									<iframe class="h600 w100"  src="https://www.google.com/maps?q=<?php echo $property['latitude']; ?>,<?php echo $property['longitude']; ?>&hl=en&z=14&output=embed" frameborder="0" allowfullscreen></iframe>
 									</div>
 								</div>
 							</div>
 						</div>
+						  <?php  if(false){?>
 						<div class="col-lg-12">
 							<div class="application_statics mt30">
 								<h4 class="mb30">Floor plans</h4>
@@ -608,6 +606,7 @@
 								</div>
 							</div>
 						</div>
+	                        <?php }?>
 						<div class="col-lg-12">
 							<h4 class="mt30 mb30">Similar Properties</h4>
 						</div>

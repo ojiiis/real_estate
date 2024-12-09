@@ -16,7 +16,7 @@ $data = file_get_contents("php://input");
 $data = json_decode($data,1);
 if(is_array($data)){
 foreach($data as $key => $value){
-$data[$key] = mysqli_real_escape_string($connection,$value);
+$data[$key] = (!is_array($value))?mysqli_real_escape_string($connection,$value):$value;
 }
 }
 
@@ -92,24 +92,16 @@ if($_REQ['url'] == $startPath."/totwo"){
        }
        if($_RESPONSE['status']){
            if(isset($data["property_id"])){
-             $prop_id = $data["property_id"];
-               $query = "UPDATE `products` SET   `user_id` = '".$data["user_id"]."',  `property_title` = '".$data["property_title"]."',  `description` = '".$data["description"]."',  `type` = '".$data["type"]."',  `status` = '".$data["status"]."', `price` = '".$data["price"]."',  `area` = '".$data["area"]."', `rooms` = '".$data["rooms"]."' WHERE `property_id` = '".$prop_id."' ";
+                $prop_id = $data["property_id"];
+               $query = "UPDATE `draft` SET   `user_id` = '".$data["user_id"]."',  `property_title` = '".$data["property_title"]."',  `description` = '".$data["description"]."',  `type` = '".$data["type"]."',  `status` = '".$data["status"]."', `price` = '".$data["price"]."',  `area` = '".$data["area"]."', `rooms` = '".$data["rooms"]."' WHERE `property_id` = '".$prop_id."' ";
                mysqli_query($connection,$query);  
            }else{
              $prop_id = uid(30);
-           $query = "INSERT INTO `products`(`user_id`,`property_id`,`property_title`,`description`,`type`,`status`,`price`,`area`,`rooms`) 
+           $query = "INSERT INTO `draft`(`user_id`,`property_id`,`property_title`,`description`,`type`,`status`,`price`,`area`,`rooms`) 
            VALUES('".$data["user_id"]."','".$prop_id."','".$data["property_title"]."','".$data["description"]."','".$data["type"]."','".$data["status"]."','".$data["price"]."','".$data["area"]."','".$data["rooms"]."') ";
               mysqli_query($connection,$query);
            }   
-           $prev_draft = "SELECT * FROM `draft` WHERE `user_id`='".$data["user_id"]."' ";
-           $run = mysqli_query($connection,$prev_draft);
-           if($run->num_rows > 0){
-                $query2 = "UPDATE `draft` SET `property_id`='".$prop_id."' WHERE `user_id`='".$data["user_id"]."' ";
-                mysqli_query($connection,$query2);
-           }else{
-                $query2 = "INSERT INTO `draft`(`user_id`,`property_id`) VALUES('".$data["user_id"]."','".$prop_id."') ";
-                mysqli_query($connection,$query2);
-           }
+      
            $_RESPONSE["data"]["redirect"] = "new?step=1";
        }
       
@@ -122,7 +114,7 @@ if($_REQ['url'] == $startPath."/tothree"){
        $er[] = "Address must be within 5 to 100 characters.";
        }
         if($_RESPONSE['status']){
-           $query = "UPDATE `products`
+           $query = "UPDATE `draft`
 SET  `address` = '".$data["address"]."',
     `state` = '".$data["state"]."',
     `city` = '".$data["city"]."',
@@ -143,7 +135,7 @@ if($_REQ['url'] == $startPath."/tofour"){
  $er = [];
  
   if($_RESPONSE['status']){
-     $query = "UPDATE `products`
+     $query = "UPDATE `draft`
 SET 
     `area_size` = '".$data["area_size"]."',
     `size_prefix` = '".$data["size_prefix"]."',
@@ -165,17 +157,37 @@ WHERE `property_id` = '".$data["property_id"]."'  && `user_id` = '".$data["user_
    $_RESPONSE["data"]["error"] = $er;
 }
 
-if($_REQ['url'] == $startPath."/tofive"){
+if($_REQ['url'] == $startPath."/topost"){
  $er = [];
  
   if($_RESPONSE['status']){
-        $query = "UPDATE `products`
-SET 
-    `property_media` = '".$data["amenities"]."'
-WHERE `property_id` = '".$data["property_id"]."'  && `user_id` = '".$data["user_id"]."' ";
-     mysqli_query($connection,$query);
-  $_RESPONSE["data"]["redirect"] = "new?step=4";
-  }
+   $data = draftData($data['property_id']);
+$query = "INSERT INTO products (
+    user_id, property_id, property_title, description, type, status, price, area, rooms, 
+    address, state, city, neighborhood, zip, country, latitude, longitude, 
+    detailed_information, area_size, size_prefix, land_area, land_area_size_postfix, 
+    bedrooms, bathrooms, garages, garages_size, year_built, video_url, virtual_tour_url, 
+    amenities,property_media, plan_description, plan_bedrooms, plan_bathrooms, plan_price, price_postfix, 
+    plan_size, plan_image
+) VALUES (
+    '".$data['user_id']."', '".$data['property_id']."', '".$data['property_title']."', '".$data['description']."', 
+    '".$data['type']."', '".$data['status']."', '".$data['price']."', '".$data['area']."', '".$data['rooms']."', 
+    '".$data['address']."', '".$data['state']."', '".$data['city']."', '".$data['neighborhood']."', 
+    '".$data['zip']."', '".$data['country']."', '".$data['latitude']."', '".$data['longitude']."', 
+    '".$data['detailed_information']."', '".$data['area_size']."', '".$data['size_prefix']."', '".$data['land_area']."', 
+    '".$data['land_area_size_postfix']."', '".$data['bedrooms']."', '".$data['bathrooms']."', '".$data['garages']."', 
+    '".$data['garages_size']."', '".$data['year_built']."', '".$data['video_url']."', '".$data['virtual_tour_url']."', 
+    '".$data['amenities']."', '".$data['property_media']."','".$data['plan_description']."', '".$data['plan_bedrooms']."', 
+    '".$data['plan_bathrooms']."', '".$data['plan_price']."', '".$data['price_postfix']."', '".$data['plan_size']."', 
+    '".$data['plan_image']."'
+)";
+ mysqli_query($connection,$query);
+ //$er[] = mysqli_error($connection);
+   mysqli_query($connection,"DELETE FROM `draft` WHERE `property_id`='".$data['property_id']."' ");
+  $_RESPONSE["message"] = "Property posted successfully.";
+    $_RESPONSE["data"]["redirect"] = "./".$data['state']."/".$data['city']."/".urlStr($data['property_title'])."-".$data['property_id'];
+   }
+
  $_RESPONSE["data"]["error"] = $er;
 }
 
@@ -183,11 +195,11 @@ if($_REQ['url'] == $startPath."/upload_property_media"){
  $er = [];
  
   if($_RESPONSE['status']){
-  $rename_Image = urlStr(productData($_POST["property_id"])["property_title"])."-".uid(20).".".pathinfo($_FILES["media"]["name"],PATHINFO_EXTENSION);
+  $rename_Image = urlStr(draftData($_POST["property_id"])["property_title"])."-".uid(20).".".pathinfo($_FILES["media"]["name"],PATHINFO_EXTENSION);
  move_uploaded_file($_FILES["media"]["tmp_name"],'../media/'.$rename_Image);
   // $fullpath = 'media/'.$rename_Image;
-   $newMedia = (count(explode(",",productData($_POST["property_id"])["property_media"])) > 1)?productData($_POST["property_id"])["property_media"].",".$rename_Image:$rename_Image;
-         $query = "UPDATE `products`
+   $newMedia = (strlen(explode(",",draftData($_POST["property_id"])["property_media"])[0]) > 0)?draftData($_POST["property_id"])["property_media"].",".$rename_Image:$rename_Image;
+         $query = "UPDATE `draft`
 SET 
     `property_media` = '".$newMedia."'
  WHERE `property_id` = '".$_POST["property_id"]."'  && `user_id` = '".$_POST["user_id"]."' ";

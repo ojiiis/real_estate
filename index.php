@@ -33,9 +33,15 @@ if($_REQ['url'] == $startPath."/listing" || $_REQ['url'] == $startPath."/listing
     include "views/listing.php";
     include "footer.php";
 }else
+if($_REQ['url'] == $startPath."/logout" || $_REQ['url'] == $startPath."/logout/"){
+unset($_SESSION['user_id']);  
+session_destroy();
+ header('Location: ./'); 
+}else
+
 if($_REQ['url'] == $startPath."/new" || $_REQ['url'] == $startPath."/new/"){
        $_GET['step'] = (!isset($_GET['step']))?0:$_GET['step'];
-       $draft = (getDraft($_SESSION['user_id']))?draftData(getDraft($_SESSION['user_id'])):false;
+       $draft = (getDraft($_SESSION['user_id']))?draftData(getDraft($_SESSION['user_id'])):[];
        $_GET['user_id'] = $_SESSION['user_id'];
              include "header-user.php";
           include "views/new-listing.php";

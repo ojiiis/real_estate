@@ -100,7 +100,7 @@ header('Location: ./');
 									<a class="dropdown-item" href="#">Messages</a>
 									<a class="dropdown-item" href="#">Purchase history</a>
 									<a class="dropdown-item" href="#">Help</a>
-									<a class="dropdown-item" href="#">Log out</a>
+									<a class="dropdown-item" href="./logout">Log out</a>
 						    	</div>
 						    </div>
 						</div>
@@ -157,7 +157,7 @@ header('Location: ./');
 	   		<li class="title"><span>Manage Account</span></li>
 		    <li><a href="page-my-packages.html"><i class="flaticon-box"></i> <span>My Package</span></a></li>
 		    <li><a href="page-my-profile.html"><i class="flaticon-user"></i> <span>My Profile</span></a></li>
-		    <li><a href="page-login.html"><i class="flaticon-logout"></i> <span>Logout</span></a></li>
+		    <li><a href="./logout"><i class="flaticon-logout"></i> <span>Logout</span></a></li>
 	    </ul>
     </div>
 	<script>

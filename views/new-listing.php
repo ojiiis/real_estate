@@ -318,7 +318,7 @@
 													id="<?php echo str_replace(" ","_",$am);?>" 
 													value="<?php echo $am;?>" 
 													<?php 
-													$ams = explode(",",$draft['amenities']);
+													$ams = explode(",",(isset($draft["property_media"]))?$draft['amenities']:'');
 													if(in_array($am,$ams)){
                                                         echo "checked";
 													}
@@ -341,7 +341,7 @@
 										</form>
 							<?php }else if($_GET['step'] == 3){ ?>
 
-								  <form action="/tofive">
+								  <form action="/topost">
 										<input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
 										<?php if($draft){ ?>
 									<input type="hidden" name="property_id" value="<?php echo $draft['property_id']; ?>" id="property_id">
@@ -354,8 +354,10 @@
 									<div class="col-lg-12">
 										<ul class="mb0" id="property_medias">
 											<?php 
-											if($draft["property_media"] && count(explode(",",$draft["property_media"])) > 0){
-												foreach(explode(",",$draft["property_media"]) as $media){
+											if(isset($draft["property_media"]) && count(explode(",",$draft["property_media"])) > 0){
+												$medias = array_reverse(explode(",",$draft["property_media"]));
+											//	sort($medias);
+												foreach($medias as $media){
 													?>
 													<li class="list-inline-item">
 												<div class="portfolio_item">
@@ -406,20 +408,20 @@
 									</style>
 									<div class="col-lg-12">
 										<div class="portfolio_upload" id="drag-over-zone">
-											<input type="file" name="myfile" />
+											
 											<div class="icon"><span class="flaticon-download"></span></div>
-											<p>Drag and drop image here</p>
+											<p>Drag and drop an image here</p>
 										</div>
 										<div id="upload-bar"><div id="upload-per"></div></div>
 									</div>
 									<div class="col-xl-6">
 										<div class="resume_uploader mb30">
-											<h4>Attachments</h4>
+											<h4>OR</h4>
 											<div class="form-inline">
 												<input class="upload-path">
 												<label class="upload">
-												    <input type="file">
-												    Select Attachment
+												    <input type="file" name="myfile" id="upload-media"/>
+												    Select an image
 												</label>
 											</div>
 										</div>
@@ -427,14 +429,22 @@
 									<div class="col-xl-12">
 										<div class="my_profile_setting_input">
 											<a class="btn btn1 float-left" href="new?step=2" style="display:flex; align-items:center;justify-content:center">Back</a>
-											<button class="btn btn2 float-right" type="submit">Next</button>
+											<div id="send_post">
+											<?php 
+												if(isset($draft["property_media"]) && count(explode(",",$draft["property_media"])) > 0){
+                                                  ?>
+												<button class="btn btn2 float-right" type="submit">Post</button>
+												<?php
+												}
+											?>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 									</form>
 							<?php }else if($_GET['step'] == 4){ ?>
-							<div class="my_dashboard_review mt30">
+							<!--div class="my_dashboard_review mt30">
 								<div class="row">
 									<div class="col-lg-12">
 										<h4 class="mb30">Floor Plans</h4>
@@ -503,7 +513,7 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							</div-->
 							<?php } ?>
 						</div>
 					</div>
@@ -568,6 +578,7 @@ document.getElementById("drag-over-zone").ondrop = function(e){
 	if(this.readyState == 4 && this.status == 200){
 		let res = JSON.parse(this.responseText);
 		if(res.data?.media){
+			 document.getElementById('send_post').innerHTML = '<button class="btn btn2 float-right" type="submit">Post</button>';
 			document.getElementById("property_medias").innerHTML = `<li class="list-inline-item">
 												<div class="portfolio_item">
 													<img class="img-fluid" src="media/${res.data?.media}"  alt="${res.data?.media}">
@@ -587,10 +598,43 @@ document.getElementById("drag-over-zone").ondrop = function(e){
 		}
   });
   upload.send(data);
-  console.log(file);
 }
 }
-
+if(document.getElementById("upload-media")){
+document.getElementById("upload-media").onchange = function(e){
+		e.preventDefault();
+	var data = new FormData();
+  const file = this.files[0];
+  data.append('media',file);
+  data.append('property_id',document.getElementById("property_id").value);
+    data.append('user_id','<?php echo $_GET['user_id']; ?>');
+  var upload = new XMLHttpRequest();
+  upload.onreadystatechange = function(){
+	if(this.readyState == 4 && this.status == 200){
+		let res = JSON.parse(this.responseText);
+		if(res.data?.media){
+		  document.getElementById('send_post').innerHTML = '<button class="btn btn2 float-right" type="submit">Post</button>';
+			document.getElementById("property_medias").innerHTML = `<li class="list-inline-item">
+												<div class="portfolio_item">
+													<img class="img-fluid" src="media/${res.data?.media}"  alt="${res.data?.media}">
+								    				<div class="edu_stats_list" data-media='${res.data?.media}' data-toggle="tooltip" data-placement="top" title="Delete" data-original-title="Delete"><a href="javascript:void(0)"><span class="flaticon-garbage"></span></a></div>
+												</div>
+											</li>` + document.getElementById("property_medias").innerHTML;
+   
+		}
+		document.getElementById("upload-per").style.width = `0%`;
+	}
+  }
+  upload.open('POST','./api/upload_property_media');
+  upload.upload.addEventListener('progress',function(event){
+        if(event.lengthComputable){
+    let totalSent = Math.round((event.loaded/event.total)* 100);
+	document.getElementById("upload-per").style.width = `${totalSent}%`;
+		}
+  });
+  upload.send(data);
+}
+}
 var animatedChecked = document.getElementsByClassName("animated-check");
 
 for(let a of animatedChecked){
