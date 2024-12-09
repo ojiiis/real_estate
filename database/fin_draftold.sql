@@ -16,25 +16,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `draftold`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `draftold`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
+CREATE TABLE `draftold` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` varchar(100) NOT NULL,
-  `fullname` varchar(200) DEFAULT NULL,
-  `username` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `avi` varchar(200) DEFAULT 'images/team/avi.png',
-  `phone` varchar(15) DEFAULT NULL,
-  `address` text,
-  `about_me` text,
-  `socials` text,
-  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `user_id` varchar(100) DEFAULT NULL,
+  `property_id` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -48,4 +39,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-07 13:17:31
+-- Dump completed on 2024-12-09 12:07:49

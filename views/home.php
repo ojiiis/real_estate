@@ -557,7 +557,7 @@
 				<div class="col-lg-12">
 					<div class="feature_property_slider">
 						<?php 
-						 $randProperty = randProducts();
+						 $randProperty = (randProducts() && is_array(randProducts()))?randProducts():[];
 						 foreach($randProperty as $property){
 							//echo explode(",",$property['property_media'])
 							//echo $property;

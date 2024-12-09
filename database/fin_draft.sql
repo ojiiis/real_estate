@@ -23,22 +23,49 @@ DROP TABLE IF EXISTS `draft`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `draft` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL DEFAULT '0',
   `user_id` varchar(100) DEFAULT NULL,
   `property_id` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `property_title` varchar(255) DEFAULT NULL,
+  `description` text,
+  `type` varchar(100) DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `area` varchar(100) DEFAULT NULL,
+  `rooms` int DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `state` varchar(100) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `neighborhood` varchar(100) DEFAULT NULL,
+  `zip` varchar(20) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `latitude` decimal(9,6) DEFAULT NULL,
+  `longitude` decimal(9,6) DEFAULT NULL,
+  `detailed_information` text,
+  `area_size` varchar(50) DEFAULT NULL,
+  `size_prefix` varchar(10) DEFAULT NULL,
+  `land_area` varchar(50) DEFAULT NULL,
+  `land_area_size_postfix` varchar(10) DEFAULT NULL,
+  `bedrooms` int DEFAULT '0',
+  `bathrooms` int DEFAULT '0',
+  `garages` varchar(50) DEFAULT NULL,
+  `garages_size` varchar(50) DEFAULT NULL,
+  `year_built` varchar(50) DEFAULT NULL,
+  `video_url` varchar(255) DEFAULT NULL,
+  `virtual_tour_url` varchar(255) DEFAULT NULL,
+  `amenities` text,
+  `property_media` text,
+  `attachments` json DEFAULT NULL,
+  `floor_plans` json DEFAULT NULL,
+  `plan_description` text,
+  `plan_bedrooms` int DEFAULT NULL,
+  `plan_bathrooms` int DEFAULT NULL,
+  `plan_price` decimal(10,2) DEFAULT NULL,
+  `price_postfix` varchar(10) DEFAULT NULL,
+  `plan_size` decimal(10,2) DEFAULT NULL,
+  `plan_image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `draft`
---
-
-LOCK TABLES `draft` WRITE;
-/*!40000 ALTER TABLE `draft` DISABLE KEYS */;
-INSERT INTO `draft` VALUES (1,'zwiXoOzKG0eFyQBrBkU8GMq1MQiucM','cTbRtDrMPEcu6rWeqGieGV0DtPs4bN');
-/*!40000 ALTER TABLE `draft` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -49,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-06 13:32:43
+-- Dump completed on 2024-12-09 12:07:49

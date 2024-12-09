@@ -33,7 +33,6 @@ CREATE TABLE `products` (
   `price` decimal(10,2) DEFAULT NULL,
   `area` varchar(100) DEFAULT NULL,
   `rooms` int DEFAULT NULL,
-  `location` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
   `state` varchar(100) DEFAULT NULL,
   `city` varchar(100) DEFAULT NULL,
@@ -42,58 +41,32 @@ CREATE TABLE `products` (
   `country` varchar(100) DEFAULT NULL,
   `latitude` decimal(9,6) DEFAULT NULL,
   `longitude` decimal(9,6) DEFAULT NULL,
-  `google_map_street_view` varchar(255) DEFAULT NULL,
   `detailed_information` text,
-  `area_size` decimal(10,2) DEFAULT NULL,
+  `area_size` varchar(50) DEFAULT NULL,
   `size_prefix` varchar(10) DEFAULT NULL,
-  `land_area` decimal(10,2) DEFAULT NULL,
+  `land_area` varchar(50) DEFAULT NULL,
   `land_area_size_postfix` varchar(10) DEFAULT NULL,
-  `bedrooms` int DEFAULT NULL,
-  `bathrooms` int DEFAULT NULL,
-  `garages` int DEFAULT NULL,
-  `garages_size` decimal(10,2) DEFAULT NULL,
-  `year_built` int DEFAULT NULL,
-  `video_url` varchar(255) DEFAULT NULL,
+  `bedrooms` varchar(50) DEFAULT '0',
+  `bathrooms` varchar(50) DEFAULT '0',
+  `garages` varchar(50) DEFAULT NULL,
+  `garages_size` varchar(50) DEFAULT NULL,
+  `year_built` varchar(50) DEFAULT NULL,
+  `video_url` varchar(255) NOT NULL,
   `virtual_tour_url` varchar(255) DEFAULT NULL,
   `amenities` text,
-  `air_conditioning` tinyint(1) DEFAULT NULL,
-  `lawn` tinyint(1) DEFAULT NULL,
-  `swimming_pool` tinyint(1) DEFAULT NULL,
-  `barbeque` tinyint(1) DEFAULT NULL,
-  `microwave` tinyint(1) DEFAULT NULL,
-  `tv_cable` tinyint(1) DEFAULT NULL,
-  `dryer` tinyint(1) DEFAULT NULL,
-  `outdoor_shower` tinyint(1) DEFAULT NULL,
-  `washer` tinyint(1) DEFAULT NULL,
-  `gym` tinyint(1) DEFAULT NULL,
-  `refrigerator` tinyint(1) DEFAULT NULL,
-  `wifi` tinyint(1) DEFAULT NULL,
-  `laundry` tinyint(1) DEFAULT NULL,
-  `sauna` tinyint(1) DEFAULT NULL,
-  `window_coverings` tinyint(1) DEFAULT NULL,
-  `property_media` json DEFAULT NULL,
+  `property_media` text,
   `attachments` json DEFAULT NULL,
   `floor_plans` json DEFAULT NULL,
   `plan_description` text,
-  `plan_bedrooms` int DEFAULT NULL,
-  `plan_bathrooms` int DEFAULT NULL,
-  `plan_price` decimal(10,2) DEFAULT NULL,
+  `plan_bedrooms` varchar(50) DEFAULT NULL,
+  `plan_bathrooms` varchar(50) DEFAULT NULL,
+  `plan_price` varchar(50) DEFAULT '0',
   `price_postfix` varchar(10) DEFAULT NULL,
-  `plan_size` decimal(10,2) DEFAULT NULL,
+  `plan_size` varchar(50) DEFAULT NULL,
   `plan_image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`,`video_url`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `products`
---
-
-LOCK TABLES `products` WRITE;
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'zwiXoOzKG0eFyQBrBkU8GMq1MQiucM','cTbRtDrMPEcu6rWeqGieGV0DtPs4bN','Sample property new','hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property hello property ','Value3','Value2',3000.00,'12',1,NULL,'Back of owoniboys building taiwo road','Kwara','Ilorin East','Owoniboys','240241','Nigeria',8.966900,4.565100,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -104,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-06 13:32:44
+-- Dump completed on 2024-12-09 12:07:49
